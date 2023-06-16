@@ -3,7 +3,7 @@
  * Nota: Para poder exponer los arcos fuera del grafo y que nadie los modifique se hizo esta clase inmutable
  * (Inmutable: una vez creado el arco no es posible cambiarle los valores).
  */
-public class Arco<T> {
+public class Arco<T> implements Comparable<Arco<T>>{
 
 	private int verticeOrigen;
 	private int verticeDestino;
@@ -43,5 +43,14 @@ public class Arco<T> {
 		return  "{ "+ this.getVerticeOrigen() + " , " + this.getVerticeDestino() + " , "+ this.getEtiqueta()+ " }";
 	}
 
-
+	@Override
+	public int compareTo(Arco<T>  o ) {
+		if ((int) this.getEtiqueta() > (int) o.getEtiqueta()) {
+			return 1;
+		}else if ((int )this.getEtiqueta() < (int)o.getEtiqueta()){
+			return -1;
+		}else {
+			return 0;
+		}
+	}
 }

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class main {
     public static void main(String[] args) {
@@ -13,6 +14,7 @@ public class main {
 
     // obtener tuneles
     ArrayList<Arco<Integer>> arcos = dataSets.getTuneles();
+    Collections.sort(arcos);
     System.out.println(arcos);
 
     // obtener estaciones

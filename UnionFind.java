@@ -51,7 +51,7 @@ public class UnionFind
         if (i < 0 || i > parent.length)
             throw new NoSuchElementException("Invalid element");
 
-        return root(i);
+        return this.root(i);
     }
 
     /**

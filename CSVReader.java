@@ -32,19 +32,19 @@ public class CSVReader {
 			Arco<Integer> tunel = new Arco<>(origen,destino,etiqueta);
 			this.tuneles.add(tunel);
 		}
-		
-	}
-	public ArrayList<Arco<Integer>> getTuneles(){
-		return new ArrayList<Arco<Integer>>(this.tuneles);
-	}
-	public ArrayList<Integer> getEstaciones(){
+		// obtengo las estaciones
 		for(Arco<Integer> tunel : tuneles){
 			if(!this.estaciones.contains(tunel.getVerticeOrigen()))
 				this.estaciones.add(tunel.getVerticeOrigen());
 			if(!this.estaciones.contains(tunel.getVerticeDestino()))
 				this.estaciones.add(tunel.getVerticeDestino());
 		}
-		return new ArrayList<Integer>(this.estaciones);
+	}
+	public ArrayList<Arco<Integer>> getTuneles(){
+		return this.tuneles;
+	}
+	public ArrayList<Integer> getEstaciones() {
+		return this.estaciones;
 	}
 
 	private ArrayList<String[]> readContent() {
