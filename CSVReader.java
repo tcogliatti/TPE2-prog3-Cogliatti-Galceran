@@ -7,11 +7,12 @@ import java.util.ArrayList;
 public class CSVReader {
 	private String path;
 
-	private ArrayList<Arco<Integer>> arcos;
-//	private ArrayList<Arco<Integer>> arcos;
+	private ArrayList<Arco<Integer>> tuneles;
+	private ArrayList<Integer> estaciones;
 	public CSVReader(String path) {
 		this.path = path;
-		this.arcos = new ArrayList<>();
+		this.tuneles = new ArrayList<>();
+		this.estaciones = new ArrayList<>();
 	}
 	public void read() {
 		
@@ -27,13 +28,23 @@ public class CSVReader {
 			Integer etiqueta = Integer.parseInt(line[2].trim());
 
 			// Aca instanciar lo que necesiten en base a los datos leidos
-			Arco<Integer> arco = new Arco<>(origen,destino,etiqueta);
-			this.arcos.add(arco);
+			// Opcion (A) trabajar con los arcos y los vertices en listas separadas
+			Arco<Integer> tunel = new Arco<>(origen,destino,etiqueta);
+			this.tuneles.add(tunel);
 		}
 		
 	}
-	public ArrayList<Arco<Integer>> getData(){
-		return new ArrayList<Arco<Integer>>(this.arcos);
+	public ArrayList<Arco<Integer>> getTuneles(){
+		return new ArrayList<Arco<Integer>>(this.tuneles);
+	}
+	public ArrayList<Integer> getEstaciones(){
+		for(Arco<Integer> tunel : tuneles){
+			if(!this.estaciones.contains(tunel.getVerticeOrigen()))
+				this.estaciones.add(tunel.getVerticeOrigen());
+			if(!this.estaciones.contains(tunel.getVerticeDestino()))
+				this.estaciones.add(tunel.getVerticeDestino());
+		}
+		return new ArrayList<Integer>(this.estaciones);
 	}
 
 	private ArrayList<String[]> readContent() {
