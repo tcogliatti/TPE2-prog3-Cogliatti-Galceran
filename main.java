@@ -6,6 +6,7 @@ public class main {
     /*
     * DataSet #1
     */
+
     String path = "/Users/tc/Desktop/TUDAI/2023/Programacion 3/TPE2-Daira-Tom/src/datasets/";
     CSVReader dataSets = new CSVReader(path+"dataset1.txt");
     dataSets.read();
